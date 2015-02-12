@@ -73,7 +73,8 @@ StepsPerInt <- aggregate(steps~interval,RawData,mean)
 1. Make a time series plot (i.e `type="l"`) of the 5 minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
 ```r
-plot(StepsPerInt$interval,StepsPerInt$steps,type = "l",main="Average Steps Taken per Day, by Interval",xlab="Interval",ylab="Steps")
+plot(StepsPerInt$interval,StepsPerInt$steps,type = "l",
+     main="Average Steps Taken per Day, by Interval",xlab="Interval",ylab="Steps")
 ```
 
 ![plot of chunk meanstepsplot](figure/meanstepsplot-1.png) 
@@ -166,7 +167,8 @@ CompData <- transform(CompData, daytype = ifelse(day %in% c("Saturday","Sunday")
 ```r
 StepsPerIntComp <- aggregate(steps~interval + daytype,CompData,mean)
 
-xyplot(steps~interval | daytype, StepsPerIntComp, type="l", layout=c(1,2),main="Average Steps Taken per Day, by Interval",xlab="Interval",ylab="Steps")
+xyplot(steps~interval | daytype, StepsPerIntComp, type="l", layout=c(1,2),
+       main="Average Steps Taken per Day, by Interval",xlab="Interval",ylab="Steps")
 ```
 
 ![plot of chunk daytypeplot](figure/daytypeplot-1.png) 

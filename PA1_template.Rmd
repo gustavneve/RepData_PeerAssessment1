@@ -54,7 +54,8 @@ StepsPerInt <- aggregate(steps~interval,RawData,mean)
 
 1. Make a time series plot (i.e `type="l"`) of the 5 minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 ```{r meanstepsplot}
-plot(StepsPerInt$interval,StepsPerInt$steps,type = "l",main="Average Steps Taken per Day, by Interval",xlab="Interval",ylab="Steps")
+plot(StepsPerInt$interval,StepsPerInt$steps,type = "l",
+     main="Average Steps Taken per Day, by Interval",xlab="Interval",ylab="Steps")
 ```
 
 2. Which 5 minute interval, on average across all the days in the dataset, contains the maximum number of steps?
@@ -116,7 +117,8 @@ CompData <- transform(CompData, daytype = ifelse(day %in% c("Saturday","Sunday")
 ```{r daytypeplot}
 StepsPerIntComp <- aggregate(steps~interval + daytype,CompData,mean)
 
-xyplot(steps~interval | daytype, StepsPerIntComp, type="l", layout=c(1,2),main="Average Steps Taken per Day, by Interval",xlab="Interval",ylab="Steps")
+xyplot(steps~interval | daytype, StepsPerIntComp, type="l", layout=c(1,2),
+       main="Average Steps Taken per Day, by Interval",xlab="Interval",ylab="Steps")
 ```
 
 Average activity appears to be higher on weekends. There is a higher spike, beginning around the 500 interval on weekdays, reducing quickly after the max interval (based on previous analysis, the max interval is 835).
